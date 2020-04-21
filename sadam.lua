@@ -147,7 +147,7 @@ print([[
 |/ \___/ (_______)   \_/   |_/    \/|/     \|
 
 > CH › @ZNZNN
-> CH › @@ZNZNN
+> CH › @BBEBW
 ~> DEVELOPER › @M0000
 ~> DEVELOPER › @M0000
 ]])
@@ -2140,19 +2140,15 @@ end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-🔖↬sadam TEAM
+⌦  SADAM TEAM  ⌫
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📮↬[Channel sadam](t.me/ZNZNN) 
+⇒⇒⇒⇒⇒[قناه السورس](t.me/ZNZNN) 
 
-🔰↬[Information](t.me/@ZNZNN)
+⇒⇒⇒⇒⇒[المطور](t.me/RRTTT)
 
-👮‍♂️↬[DEVELOPER](t.me/sajad14p)
+⇒⇒⇒⇒↬[المطور الثاني](t.me/lana_200) 
+ــــــــــــــــــــــــ⇑ــــــــــــــــــــــ
 
-👮‍♂️↬[DEVELOPER](t.me/tofy_6)
-
-🔖↬[The way his inauguration](https://t.me/ZNZNN/15)
-
-📌↬[To talk to us](t.me/rrrrybot)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
