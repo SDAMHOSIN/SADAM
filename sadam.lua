@@ -147,7 +147,7 @@ print([[
 |/ \___/ (_______)   \_/   |_/    \/|/     \|
 
 > CH › @ZNZNN
-> CH › @BBEBW
+> CH › @@ZNZNN
 ~> DEVELOPER › @M0000
 ~> DEVELOPER › @M0000
 ]])
@@ -2144,7 +2144,7 @@ Text = [[
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 📮↬[Channel sadam](t.me/ZNZNN) 
 
-🔰↬[Information](t.me/BBEBW)
+🔰↬[Information](t.me/@ZNZNN)
 
 👮‍♂️↬[DEVELOPER](t.me/sajad14p)
 
