@@ -1,15 +1,15 @@
 
-# BOYKA
+# Source 
 
-# <p align="center" style="color:#cb3349" >سورس بويكا اول على تلكرام 🎗️
+# <p align="center" style="color:#cb3349" >سورس صدام حسين اول على تلكرام 🎗️
 
 # <p align="center" style="color:#cb3349" > شروحات عن السورس ادخل الى قناة السورس
 
-# <p align="center" style="color:#cb3349" > [اصـــغـــط هــنـــا لــلــدخــول الــى الــقــنــاة](https://telegram.me/BOBBW) <br>
+# <p align="center" style="color:#cb3349" > [اصـــغـــط هــنـــا لــلــدخــول الــى الــقــنــاة](https://telegram.me/ZnNn) <br>
 
 # <p align="center"> كود تنصيب السورس 🖇
 
- # <p align="center" style="color:#cb3349" > ``git clone git clone https://github.com/BOYKATEAM/BOYKA ;cd BOYKA;chmod +x install;./install``
+ # <p align="center" style="color:#cb3349" > ``git clone git clone https://github.com/SDAMHOSIN/SADAM ;cd sadam;chmod +x install;./install``
 
 # <p align="center"> بعد انتهاء عمليه تثبيت السورس 🕹
 
@@ -23,10 +23,8 @@
 
   
 
-# <p align="center" style="color:#cb3349" > [مــطــور ســورس](https://telegram.me/sajad14p) <br>
+# <p align="center" style="color:#cb3349" > [مــطــور ســورس](https://telegram.me/M0000) <br>
 
   
 
   
-
-# <p align="center" style="color:#cb3349" > [كـــروب خــاص لــمـطـوريـن](https://telegram.me/BOAKIY) <br>
