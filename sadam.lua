@@ -934,7 +934,6 @@ echo '*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉~*\n🔌┋{ مـده تـشغيـل �
 ]]):read('*all'))  
 end
 
-
 if text == 'تحديث السورس ☑️' and SudoBot(msg) then 
 os.execute('rm -rf sadam.lua')
 os.execute('wget https://raw.githubusercontent.com/SDAMHOSIN/SADAM/master/sadam.lua')
@@ -943,7 +942,7 @@ dofile('sadam.lua')
 end
 if text == 'الاصدار⚙️' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,'📡┇ اصدار سورس صدام \n📟┇ الاصدار ←{ 1.2v}') 
+send(msg.chat_id_, msg.id_,'📡┇ اصدار سورس صدام \n📟┇ الاصدار ←{ 1.3v}') 
 end
 if text == "ضع اسم للبوت ®" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
