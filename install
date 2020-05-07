@@ -18,6 +18,7 @@ sudo apt-get install screen -y
 sudo apt-get install libstdc++6 -y
 sudo apt-get install lua-lgi -y
 sudo apt-get install libnotify-dev -y
+sudo timedatectl set-timezone Asia/Baghdad
 sudo chmod +x tg
 lua sadam.lua
 sudo chmod +x sadam
