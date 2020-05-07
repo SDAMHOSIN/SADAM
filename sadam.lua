@@ -98,7 +98,7 @@ echo -e "\e[36m"
 done
 ]])  
 file:close()  
-file = io.open("SD", "w")  
+file = io.open("SM", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/sadam
