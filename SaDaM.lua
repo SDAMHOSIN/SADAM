@@ -30,9 +30,6 @@ end
 if not redis:get(Server_Sadam.."User_Devsadam1") then
 io.write('\n\27[1;35m⌔︙Send UserName For Sudo : ارسل معرف المطور الاساسي ...\n\27[0;39;49m')
 local User_Sudo = io.read():gsub('@','')
-if User_Sudo ~= '' then
-local GetInfoUser = http.request(https://api.telegram.org/bot/?id="..User_Sudo)
-local User_Info = JSON.decode(GetInfoUser)
 if User_Info.Info.Chek == "Not_Info" then
 io.write('\n\27[1;31m The UserName was not Saved : المعرف غلط ارسل المعرف صحيح\n\27[0;39;49m')
 os.execute('lua SaDaM.lua')
