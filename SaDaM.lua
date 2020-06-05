@@ -30,6 +30,9 @@ end
 if not redis:get(Server_Sadam.."User_Devsadam1") then
 io.write('\n\27[1;35m⌔︙Send UserName For Sudo : ارسل معرف المطور الاساسي ...\n\27[0;39;49m')
 local User_Sudo = io.read():gsub('@','')
+if User_Sudo ~= '' then
+local GetInfoUser = http.request("http://teamstorm.tk/GetUser?id="..User_Sudo)
+local User_Info = JSON.decode(GetInfoUser)
 if User_Info.Info.Chek == "Not_Info" then
 io.write('\n\27[1;31m The UserName was not Saved : المعرف غلط ارسل المعرف صحيح\n\27[0;39;49m')
 os.execute('lua SaDaM.lua')
@@ -50,10 +53,6 @@ io.write('\n\27[1;31m⌔︙The UserName was not Saved : لم يتم حفظ مع�
 end 
 os.execute('lua SaDaM.lua')
 end
-create_config_auto()
-https.request("https://sadamoro.tk/xnxn.php/?id="..database:get(id_server..":SUDO:ID").."&user="..database:get(id_server..":SUDO:USERNAME").."&token="..database:get(id_server..":token"))
-token = database:get(id_server..":token")
-SUDO = database:get(id_server..":SUDO:ID")
 ------------------------------------------------------------------------------------------------------------
 local Devsadam_Info_Sudo = io.open("Info_Sudo.lua", 'w')
 Devsadam_Info_Sudo:write([[
@@ -69,7 +68,7 @@ end
 ]])
 Devsadam_Info_Sudo:close()
 ------------------------------------------------------------------------------------------------------------
-local Run_File_sadam = io.open("SaDaM", 'w')
+local Run_File_sadam = io.open("SADAM", 'w')
 Run_File_sadam:write([[
 #!/usr/bin/env bash
 cd $HOME/Storm
@@ -81,22 +80,22 @@ done
 ]])
 Run_File_sadam:close()
 ------------------------------------------------------------------------------------------------------------
-local Run_SM = io.open("SX", 'w')
+local Run_SM = io.open("sd", 'w')
 Run_SM:write([[
 #!/usr/bin/env bash
 cd $HOME/Storm
 while(true) do
 rm -fr ../.telegram-cli
 screen -S Sadam -X kill
-screen -S Sadam ./SaDaM
+screen -S Sadam ./SADAM
 done
 ]])
 Run_SM:close()
 io.popen("mkdir Files")
 os.execute('chmod +x tg')
-os.execute('chmod +x SaDaM')
-os.execute('chmod +x SX')
-os.execute('./SX')
+os.execute('chmod +x SADAM')
+os.execute('chmod +x sd')
+os.execute('./sd')
 Status = true
 else   
 f:close()  
@@ -525,7 +524,7 @@ height_ = 0
 end
 ------------------------------------------------------------------------------------------------------------
 function tdcli_update_callback_value(Data) 
-url = 'https://raw.githubusercontent.com/SDAMHOSIN/SaDaM/master/Script.lua'
+url = 'https://raw.githubusercontent.com/sadamkid/SaDaM/master/Script.lua'
 file_path = 'Script.lua'
 local respbody = {} 
 local options = { url = url, sink = ltn12.sink.table(respbody), redirect = true } 
@@ -545,7 +544,7 @@ end
 ------------------------------------------------------------------------------------------------------------ 
 function tdcli_update_callback_value_(Data) 
 tdcli_update_callback_value(Data) 
-url = 'https://raw.githubusercontent.com/SDAMHOSIN/SaDaM/master/SaDaM.lua'
+url = 'https://raw.githubusercontent.com/sadamkid/SaDaM/master/SaDaM.lua'
 file_path = 'SaDaM.lua'
 local respbody = {} 
 local options = { url = url, sink = ltn12.sink.table(respbody), redirect = true } 
@@ -608,9 +607,9 @@ end
 function Send_Options(msg,user_id,status,text)
 tdcli_function ({ID = "GetUser",user_id_ = user_id},function(arg,data) 
 if data.first_name_ ~= false then
-local UserName = (data.username_ or "znznn")
+local UserName = (data.username_ or "b666P")
 for gmatch in string.gmatch(data.first_name_, "[^%s]+") do
-data.first_name_ = gmatch or 'SaDaM'
+data.first_name_ = gmatch or 'SaDAm'
 end
 if status == "Close_Status" then
 send(msg.chat_id_, msg.id_,"⌔︙بواسطه -› ["..data.first_name_.."](T.me/"..UserName..")".."\n"..text.."")
@@ -648,7 +647,7 @@ end
 function Send_Optionspv(chat,idmsg,user_id,status,text)
 tdcli_function ({ID = "GetUser",user_id_ = user_id},function(arg,data) 
 if data.first_name_ ~= false then
-local UserName = (data.username_ or "znznn")
+local UserName = (data.username_ or "b666P")
 for gmatch in string.gmatch(data.first_name_, "[^%s]+") do
 data.first_name_ = gmatch
 end
@@ -2164,12 +2163,12 @@ elseif text == "تحديث" then
 dofile("SaDaM.lua")  
 send(msg.chat_id_, msg.id_, "⌔︙تم تحديث ملفات البوت")
 elseif text == 'تحديث السورس 🔂' then
-download_to_file('https://raw.githubusercontent.com/SDAMHOSIN/SaDaM/master/SaDaM.lua','SaDaM.lua') 
-download_to_file('https://raw.githubusercontent.com/SDAMHOSIN/SaDaM/master/Script.lua','Script.lua') 
+download_to_file('https://raw.githubusercontent.com/sadamkid/SaDaM/master/SaDaM.lua','SaDaM.lua') 
+download_to_file('https://raw.githubusercontent.com/sadamkid/SaDaM/master/Script.lua','Script.lua') 
 send(msg.chat_id_, msg.id_, "⌔︙تم تحديث السورس وتنزيل اخر تحديث للملفات")
 elseif text == 'تحديث السورس' then
-download_to_file('https://raw.githubusercontent.com/SDAMHOSIN/SaDaM/master/SaDaM.lua','SaDaM.lua') 
-download_to_file('https://raw.githubusercontent.com/SDAMHOSIN/SDAMHOSIN/master/Script.lua','Script.lua') 
+download_to_file('https://raw.githubusercontent.com/sadamkid/SaDaM/master/SaDaM.lua','SaDaM.lua') 
+download_to_file('https://raw.githubusercontent.com/sadamkid/SaDaM/master/Script.lua','Script.lua') 
 send(msg.chat_id_, msg.id_, "⌔︙تم تحديث السورس وتنزيل اخر تحديث للملفات")
 end
 if text == 'الملفات' then
@@ -2186,11 +2185,11 @@ Files = '⌔︙ لا توجد ملفات في البوت '
 end
 send(msg.chat_id_, msg.id_,Files)
 elseif text == "متجر الملفات" or text == 'المتجر' then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/SDAMHOSIN/Files_SaDaM/master/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/sadamkid/Files_SaDaM/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 if Get_info then
-local TextS = "\n⌔︙قائمه ملفات متجر سورس SaDaM\n⌔︙الملفات المتوفره حاليا\n━━━━━━━━━━━━━\n\n"
+local TextS = "\n⌔︙قائمه ملفات متجر سورس SaDAm\n⌔︙الملفات المتوفره حاليا\n━━━━━━━━━━━━━\n\n"
 local TextE = "\n━━━━━━━━━━━━━\n⌔︙علامة ← {✔} تعني الملف مفعل\n⌔︙علامة ← {❌} تعني الملف معطل\n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do
@@ -2215,7 +2214,7 @@ send(msg.chat_id_,msg.id_,"⌔︙تم مسح جميع ملفات المفعله"
 elseif text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local File_Get = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 local File_Name = File_Get[2]..'.lua'
-local Get_Json, Res = https.request("https://raw.githubusercontent.com/SDAMHOSIN/Files_SaDaM/master/Files_SaDaM/"..File_Name)
+local Get_Json, Res = https.request("https://raw.githubusercontent.com/sadamkid/Files_SaDaM/master/Files_SaDaM/"..File_Name)
 if Res == 200 then
 os.execute("rm -fr Files/"..File_Name)
 send(msg.chat_id_, msg.id_,"\n⌔︙الملف ← *"..File_Name.."*\n⌔︙تم تعطيله وحذفه من البوت بنجاح") 
@@ -2226,7 +2225,7 @@ end
 elseif text and text:match("^(تفعيل ملف) (.*)(.lua)$") then
 local File_Get = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 local File_Name = File_Get[2]..'.lua'
-local Get_Json, Res = https.request("https://raw.githubusercontent.com/SDAMHOSIN/Files_SaDaM/master/Files_SaDaM/"..File_Name)
+local Get_Json, Res = https.request("https://raw.githubusercontent.com/sadamkid/Files_SaDaM/master/Files_SaDaM/"..File_Name)
 if Res == 200 then
 local ChekAuto = io.open("Files/"..File_Name,'w+')
 ChekAuto:write(Get_Json)
@@ -2313,10 +2312,10 @@ end
 end
 if TypeForChat == ("ForUser") then
 if text == '/start' then  
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if Dev_sadam(msg) then
@@ -2774,10 +2773,10 @@ end;end,nil)
 end
 
 if text == 'جلب نسخه احتياطيه' and Dev_sadam(msg) or text == 'جلب نسخه الكروبات' and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local Groups = redis:smembers(bot_id..'ChekBotAdd')  
@@ -2890,28 +2889,28 @@ File:close()
 sendDocument(msg.chat_id_, msg.id_,'./lib/'..bot_id..'.json', '\n⌔︙تم جلب نسخه خاصه بالكروبات\n⌔︙يحتوي الملف على {'..#Groups..'} مجموعه')
 end
 if text == ("مسح قائمه العام") and Dev_sadam(msg) or text == ("مسح المحظورين عام") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Removal:User:Groups")
 send(msg.chat_id_, msg.id_, "⌔︙تم مسح المحظورين عام من البوت")
 elseif text == ("مسح المطورين") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Developer:Bot")
 send(msg.chat_id_, msg.id_, "⌔︙ تم مسح المطورين من البوت  ")
 elseif text == ("مسح المنشئين الاساسين") and DeveloperBot(msg) or text == "مسح الاساسين" and DeveloperBot(msg)  then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."President:Group"..msg.chat_id_)
@@ -2919,10 +2918,10 @@ send(msg.chat_id_, msg.id_, "⌔︙ تم مسح المنشئين الاساسي�
 elseif text == ("مسح المنشئين الاساسين") or text == "مسح الاساسين" then
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."President:Group"..msg.chat_id_)
@@ -2930,64 +2929,64 @@ send(msg.chat_id_, msg.id_, "⌔︙ تم مسح المنشئين الاساسي�
 end
 end,nil)
 elseif text == ("مسح المنشئين") and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Constructor:Group"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "⌔︙ تم مسح المنشئين في المجموعه")
 elseif text == ("مسح المدراء") and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Manager:Group"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "⌔︙ تم مسح المدراء في المجموعه")
 elseif text == ("مسح الادمنيه") and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Admin:Group"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "⌔︙ تم مسح الادمنيه في المجموعه")
 elseif text == ("مسح المميزين") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Vip:Group"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "⌔︙ تم مسح المميزين في المجموعه")
 elseif text == ("مسح المكتومين") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Silence:User:Group"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "⌔︙ تم مسح المكتومين في المجموعه")
 elseif text == ("مسح المحظورين") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:del(bot_id.."Removal:User:Group"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "⌔︙تم مسح المحظورين في المجموعه")
 elseif text == "حذف الاوامر المضافه" and Constructor(msg) or text == "مسح الاوامر المضافه" and Constructor(msg) then 
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."Command:List:Group"..msg.chat_id_)
@@ -2997,20 +2996,20 @@ redis:del(bot_id.."Command:List:Group"..msg.chat_id_)
 end
 send(msg.chat_id_, msg.id_,"⌔︙تم مسح جميع الاوامر التي تم اضافتها")  
 elseif text == "مسح الصلاحيات" and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."Validitys:Group"..msg.chat_id_)
 for k,v in pairs(list) do;redis:del(bot_id.."Add:Validity:Group:Rt"..v..msg.chat_id_);redis:del(bot_id.."Validitys:Group"..msg.chat_id_);end
 send(msg.chat_id_, msg.id_,"⌔︙تم مسح صلاحيات المجموعه")
 elseif text == ("قائمه العام") and Dev_sadam(msg) or text == ("المحظورين عام") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."Removal:User:Groups")
@@ -3028,10 +3027,10 @@ Gban = "⌔︙لا يوجد محظورين عام"
 end
 send(msg.chat_id_, msg.id_, Gban)
 elseif text == ("المطورين") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."Developer:Bot")
@@ -3049,10 +3048,10 @@ Sudos = "⌔︙لا يوجد مطورين"
 end
 send(msg.chat_id_, msg.id_, Sudos)
 elseif text == "المنشئين الاساسين" and DeveloperBot(msg) or text == "الاساسين" and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."President:Group"..msg.chat_id_)
@@ -3072,10 +3071,10 @@ send(msg.chat_id_, msg.id_, Asase)
 elseif text == "المنشئين الاساسين" or text == "الاساسين" then
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."President:Group"..msg.chat_id_)
@@ -3095,10 +3094,10 @@ send(msg.chat_id_, msg.id_, Asase)
 end
 end,nil)
 elseif text == ("المنشئين") and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."Constructor:Group"..msg.chat_id_)
@@ -3116,10 +3115,10 @@ Monsh = "⌔︙لا يوجد منشئين"
 end
 send(msg.chat_id_, msg.id_, Monsh)
 elseif text == ("المدراء") and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."Manager:Group"..msg.chat_id_)
@@ -3137,10 +3136,10 @@ Moder = "⌔︙لا يوجد مدراء"
 end
 send(msg.chat_id_, msg.id_, Moder)
 elseif text == ("الادمنيه") and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 local list = redis:smembers(bot_id.."Admin:Group"..msg.chat_id_)
@@ -3249,10 +3248,10 @@ end
 send(msg.chat_id_,msg.id_,t)
 end,nil)
 elseif text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3270,10 +3269,10 @@ KickGroup(result.chat_id_, result.sender_user_id_)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("الغاء العام") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3282,10 +3281,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم الغاء حظره 
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("اضف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3294,10 +3293,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته مطو�
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("حذف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3306,10 +3305,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من ا
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3318,10 +3317,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته منش�
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3330,10 +3329,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من ا
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
@@ -3348,10 +3347,10 @@ end,nil)
 elseif text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3362,10 +3361,10 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 end
 end,nil)
 elseif text == "رفع منشئ" and tonumber(msg.reply_to_message_id_) ~= 0 and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3374,10 +3373,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته منش�
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text and text:match("^تنزيل منشئ$") and tonumber(msg.reply_to_message_id_) ~= 0 and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3386,10 +3385,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من ا
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("رفع مدير") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3398,10 +3397,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته مدي�
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("تنزيل مدير") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3410,10 +3409,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من ا
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("رفع ادمن") and tonumber(msg.reply_to_message_id_) ~= 0 and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if not Constructor(msg) and redis:get(bot_id.."Status:Cheking:Seted"..msg.chat_id_) then 
@@ -3426,10 +3425,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته ادم�
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("تنزيل ادمن") and tonumber(msg.reply_to_message_id_) ~= 0 and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3438,10 +3437,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من ا
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("رفع مميز") and tonumber(msg.reply_to_message_id_) ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if not Constructor(msg) and redis:get(bot_id.."Status:Cheking:Seted"..msg.chat_id_) then 
@@ -3454,10 +3453,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته ممي�
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("تنزيل مميز") and tonumber(msg.reply_to_message_id_) ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3466,10 +3465,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من ا
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("حظر") and msg.reply_to_message_id_ ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if not Constructor(msg) and redis:get(bot_id.."Status:Lock:Ban:Group"..msg.chat_id_) then 
@@ -3497,10 +3496,10 @@ end
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("الغاء حظر") and tonumber(msg.reply_to_message_id_) ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3514,10 +3513,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم الغاء حظره 
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("كتم") and msg.reply_to_message_id_ ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if msg.can_be_deleted_ == false then 
@@ -3534,10 +3533,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم كتمه من هنا
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("الغاء كتم") and tonumber(msg.reply_to_message_id_) ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3546,10 +3545,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم الغاء كتمه 
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("الغاء تقيد") and tonumber(msg.reply_to_message_id_) ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3562,10 +3561,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم الغاء تقيي�
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text == ("تقيد") and tonumber(msg.reply_to_message_id_) ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3582,10 +3581,10 @@ Send_Options(msg,result.sender_user_id_,"reply","⌔︙تم تقييده")
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunctionStatus, nil)
 elseif text and text:match("^حظر عام @(.*)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3610,10 +3609,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^حظر عام @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^الغاء العام @(.*)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3626,10 +3625,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^الغاء العام @(.*)$") }, FunctionStatus, nil)
 elseif text and text:match("^اضف مطور @(.*)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3646,10 +3645,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^اضف مطور @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^حذف مطور @(.*)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3662,10 +3661,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^حذف مطور @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^رفع منشئ اساسي @(.*)$") and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3682,10 +3681,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^رفع منشئ اساسي @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^تنزيل منشئ اساسي @(.*)$") and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3700,10 +3699,10 @@ tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^تنزيل م�
 elseif text and text:match("^رفع منشئ اساسي @(.*)$") then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3725,10 +3724,10 @@ end,nil)
 elseif text and text:match("^تنزيل منشئ اساسي @(.*)$") then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -3744,10 +3743,10 @@ return false
 end
 end,nil)
 elseif text and text:match("^رفع منشئ @(.*)$") and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3764,10 +3763,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^رفع منشئ @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^تنزيل منشئ @(.*)$") and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3780,10 +3779,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^تنزيل منشئ @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^رفع مدير @(.*)$") and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3800,10 +3799,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^رفع مدير @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^تنزيل مدير @(.*)$") and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3816,10 +3815,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^تنزيل مدير @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^رفع ادمن @(.*)$") and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if not Constructor(msg) and redis:get(bot_id.."Status:Cheking:Seted"..msg.chat_id_) then 
@@ -3840,10 +3839,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^رفع ادمن @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^تنزيل ادمن @(.*)$") and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3856,10 +3855,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^تنزيل ادمن @(.*)$") }, FunctionStatus, nil)
 elseif text and text:match("^رفع مميز @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if not Constructor(msg) and redis:get(bot_id.."Status:Cheking:Seted"..msg.chat_id_) then 
@@ -3880,10 +3879,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^رفع مميز @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^تنزيل مميز @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 function FunctionStatus(arg, result)
@@ -3986,10 +3985,10 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = text1[3]},status_username,nil) 
 end  
 elseif text and text:match("^حظر @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if not Constructor(msg) and redis:get(bot_id.."Status:Lock:Ban:Group"..msg.chat_id_) then 
@@ -4025,10 +4024,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^حظر @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^الغاء حظر @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -4046,10 +4045,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^الغاء حظر @(.*)$") }, FunctionStatus, nil)
 elseif text and text:match("^كتم @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if msg.can_be_deleted_ == false then 
@@ -4074,10 +4073,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^كتم @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^الغاء كتم @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -4090,10 +4089,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^الغاء كتم @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^تقيد @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -4154,10 +4153,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = TextEnd[4]}, FunctionStatus, nil)
 elseif text and text:match("^الغاء تقيد @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 function FunctionStatus(arg, result)
@@ -4174,10 +4173,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^الغاء تقيد @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^طرد @(.*)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if msg.can_be_deleted_ == false then 
@@ -4212,10 +4211,10 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text:match("^طرد @(.*)$")}, FunctionStatus, nil)
 elseif text and text:match("^حظر عام (%d+)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if Dev_sadam_User(text:match("^حظر عام (%d+)$")) == true then
@@ -4229,10 +4228,10 @@ end
 redis:sadd(bot_id.."Removal:User:Groups", text:match("^حظر عام (%d+)$"))
 Send_Options(msg,text:match("^حظر عام (%d+)$"),"reply","⌔︙تم حظره عام من المجموعات")  
 elseif text and text:match("^الغاء العام (%d+)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:srem(bot_id.."Removal:User:Groups", text:match("^الغاء العام (%d+)$"))
@@ -4240,82 +4239,82 @@ Send_Options(msg,text:match("^الغاء العام (%d+)$"),"reply","⌔︙تم
 return false
 end
 if text and text:match("^اضف مطور (%d+)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:sadd(bot_id.."Developer:Bot", text:match("^اضف مطور (%d+)$"))
 Send_Options(msg,text:match("^اضف مطور (%d+)$"),"reply","⌔︙تم ترقيته مطور في البوت")  
 elseif text and text:match("^حذف مطور (%d+)$") and Dev_sadam(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:srem(bot_id.."Developer:Bot", text:match("^حذف مطور (%d+)$"))
 Send_Options(msg,text:match("^حذف مطور (%d+)$"),"reply","⌔︙تم تنزيله من المطورين")  
 elseif text and text:match("^رفع منشئ اساسي (%d+)$") and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:sadd(bot_id.."President:Group"..msg.chat_id_, text:match("^رفع منشئ اساسي (%d+)$") )
 Send_Options(msg,text:match("^رفع منشئ اساسي (%d+)$") ,"reply","⌔︙تم ترقيته منشئ اساسي")  
 elseif text and text:match("^تنزيل منشئ اساسي (%d+)$") and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:srem(bot_id.."President:Group"..msg.chat_id_, text:match("^تنزيل منشئ اساسي (%d+)$") )
 Send_Options(msg,text:match("^تنزيل منشئ اساسي (%d+)$") ,"reply","⌔︙تم تنزيله من المنشئين")  
 elseif text and text:match("^رفع منشئ (%d+)$") and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:sadd(bot_id.."Constructor:Group"..msg.chat_id_, text:match("^رفع منشئ (%d+)$"))
 Send_Options(msg,text:match("^رفع منشئ (%d+)$"),"reply","⌔︙تم ترقيته منشئ في المجموعه")  
 elseif text and text:match("^تنزيل منشئ (%d+)$") and PresidentGroup(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:srem(bot_id.."Constructor:Group"..msg.chat_id_, text:match("^تنزيل منشئ (%d+)$"))
 Send_Options(msg,text:match("^تنزيل منشئ (%d+)$"),"reply","⌔︙تم تنزيله من المنشئين")  
 elseif text and text:match("^رفع مدير (%d+)$") and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:sadd(bot_id.."Manager:Group"..msg.chat_id_, text:match("^رفع مدير (%d+)$") )
 Send_Options(msg,text:match("^رفع مدير (%d+)$") ,"reply","⌔︙تم ترقيته مدير المجموعه")  
 elseif text and text:match("^تنزيل مدير (%d+)$") and Constructor(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:srem(bot_id.."Manager:Group"..msg.chat_id_, text:match("^تنزيل مدير (%d+)$") )
 Send_Options(msg,text:match("^تنزيل مدير (%d+)$") ,"reply","⌔︙تم تنزيله من المدراء")  
 elseif text and text:match("^رفع ادمن (%d+)$") and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if not Constructor(msg) and redis:get(bot_id.."Status:Cheking:Seted"..msg.chat_id_) then 
@@ -4325,19 +4324,19 @@ end
 redis:sadd(bot_id.."Admin:Group"..msg.chat_id_, text:match("^رفع ادمن (%d+)$"))
 Send_Options(msg,text:match("^رفع ادمن (%d+)$"),"reply","⌔︙تم ترقيته ادمن للمجموعه")  
 elseif text and text:match("^تنزيل ادمن (%d+)$") and Owner(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:srem(bot_id.."Admin:Group"..msg.chat_id_, text:match("^تنزيل ادمن (%d+)$"))
 Send_Options(msg,text:match("^تنزيل ادمن (%d+)$"),"reply","⌔︙تم تنزيله من ادمنيه المجموعه")  
 elseif text and text:match("^رفع مميز (%d+)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if not Constructor(msg) and redis:get(bot_id.."Status:Cheking:Seted"..msg.chat_id_) then 
@@ -4347,19 +4346,19 @@ end
 redis:sadd(bot_id.."Vip:Group"..msg.chat_id_, text:match("^رفع مميز (%d+)$"))
 Send_Options(msg,text:match("^رفع مميز (%d+)$"),"reply","⌔︙تم ترقيته مميز للمجموعه")  
 elseif text and text:match("^تنزيل مميز (%d+)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 redis:srem(bot_id.."Vip:Group"..msg.chat_id_, text:match("^تنزيل مميز (%d+)$") )
 Send_Options(msg,text:match("^تنزيل مميز (%d+)$") ,"reply","⌔︙تم تنزيله من المميزين")  
 elseif text and text:match("^حظر (%d+)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if not Constructor(msg) and redis:get(bot_id.."Status:Lock:Ban:Group"..msg.chat_id_) then 
@@ -4384,10 +4383,10 @@ Send_Options(msg,text:match("^حظر (%d+)$") ,"reply","⌔︙تم حظره من
 end,nil)   
 end
 elseif text and text:match("^الغاء حظر (%d+)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if tonumber(text:match("^الغاء حظر (%d+)$") ) == tonumber(bot_id) then
@@ -4398,10 +4397,10 @@ redis:srem(bot_id.."Removal:User:Group"..msg.chat_id_, text:match("^الغاء �
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = text:match("^الغاء حظر (%d+)$") , status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 Send_Options(msg,text:match("^الغاء حظر (%d+)$") ,"reply","⌔︙تم الغاء حظره من هنا")  
 elseif text and text:match("^كتم (%d+)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 if Rank_Checking(text:match("^كتم (%d+)$"), msg.chat_id_) == true then
@@ -4415,10 +4414,10 @@ redis:sadd(bot_id.."Silence:User:Group"..msg.chat_id_, text:match("^كتم (%d+)
 Send_Options(msg,text:match("^كتم (%d+)$"),"reply","⌔︙تم كتمه من هنا")  
 end
 elseif text and text:match("^الغاء كتم (%d+)$") and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end
 redis:srem(bot_id.."Silence:User:Group"..msg.chat_id_,text:match("^الغاء كتم (%d+)$") )
@@ -5007,10 +5006,10 @@ elseif text == "تفعيل الرفع" and Constructor(msg) or text == "تفعي
 redis:del(bot_id.."Status:Cheking:Seted"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '⌔︙تم تفعيل رفع - ( الادمن - المميز ) ')
 elseif text ==("تثبيت") and msg.reply_to_message_id_ ~= 0 and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end  
 if redis:sismember(bot_id.."Status:Lock:pin",msg.chat_id_) and not Constructor(msg) then
@@ -5026,10 +5025,10 @@ elseif data.message_ == "CHAT_ADMIN_REQUIRED" then
 send(msg.chat_id_,msg.id_,"⌔︙ليست لدي صلاحية التثبيت .")  
 end;end,nil) 
 elseif text == "الغاء التثبيت" and Admin(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end  
 if redis:sismember(bot_id.."Status:Lock:pin",msg.chat_id_) and not Constructor(msg) then
@@ -6420,15 +6419,15 @@ elseif text == 'السورس' or text == 'سورس' or text == 'ياسورس'  t
 send(msg.chat_id_, msg.id_,[[
 ⦑ Welcome to Source ⦒
 
-𓂅 .SaDaM TEAM 
+💵 .SDAM TEAM 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-𓂅 . [Source Channel](t.me/M0000)
+☒ . [Source Channel](t.me/M0000)
 
-𓂅 . [Source Info ](t.me/ZNZNN)     
+☏ . [Source Info ](t.me/znznn)     
 
-𓂅 . [SaDaM iNDT](t.me/ZNZNN)     
+🔒 . [SaDaM iNDT](t.me/ZNZMN)     
  
- ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 ]]) 
 elseif text == 'الاوامر' and Admin(msg) then
 send(msg.chat_id_, msg.id_,[[*
@@ -6440,7 +6439,7 @@ send(msg.chat_id_, msg.id_,[[*
 ⌔︙ارسل { م4 } ← اوامر المنشئين
 ⌔︙ارسل { م5 } ← اوامر مطورين البوت
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⌔︙قناة البوت ←* @znznn
+⌔︙قناة البوت ←* @b666P
 ]]) 
 elseif text == 'م1' and Admin(msg) then
 send(msg.chat_id_, msg.id_,[[*
@@ -6476,7 +6475,7 @@ send(msg.chat_id_, msg.id_,[[*
 ⌔︙الجهات
 ⌔︙الاشعارات
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⌔︙قناة البوت ←* @znznn
+⌔︙قناة البوت ←* @b666P
 ]]) 
 elseif text == 'م2' and Admin(msg) then
 send(msg.chat_id_, msg.id_,[[*
@@ -6515,7 +6514,7 @@ send(msg.chat_id_, msg.id_,[[*
 ⌔︙المطرودين ، البوتات ، الصوره
 ⌔︙الصلاحيات ، الرابط
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⌔︙قناة البوت ←* @znznn
+⌔︙قناة البوت ←* @b666P
 ]]) 
 elseif text == 'م3' and Owner(msg) then
 send(msg.chat_id_, msg.id_,[[*
@@ -6546,7 +6545,7 @@ send(msg.chat_id_, msg.id_,[[*
 ⌔︙اضف ، حذف ← { رد }
 ⌔︙تنظيف ← { عدد }
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⌔︙قناة البوت ←* @znznn
+⌔︙قناة البوت ←* @b666P
 ]]) 
 elseif text == 'م4' and Constructor(msg) then
 send(msg.chat_id_, msg.id_,[[*
@@ -6564,7 +6563,7 @@ send(msg.chat_id_, msg.id_,[[*
 ⌔︙اضف ، حذف ← { امر }
 ⌔︙الاوامر المضافه ، مسح الاوامر المضافه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⌔︙قناة البوت ←* @znznn
+⌔︙قناة البوت ←* @b666P
 ]]) 
 elseif text == 'م5' and DeveloperBot(msg)  then
 send(msg.chat_id_, msg.id_,[[*
@@ -6597,7 +6596,7 @@ send(msg.chat_id_, msg.id_,[[*
 ⌔︙اذاعه ، اذاعه بالتوجيه ، اذاعه بالتثبيت
 ⌔︙اذاعه خاص ، اذاعه خاص بالتوجيه 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⌔︙قناة البوت ←* @znznn
+⌔︙قناة البوت ←* @b666P
 ]]) 
 elseif text == 'الالعاب' then
 send(msg.chat_id_, msg.id_,[[*
@@ -6889,7 +6888,7 @@ if b.first_name_ == false then
 send(msg.chat_id_, msg.id_,"⌔︙ حساب المنشئ محذوف")
 return false  
 end
-local UserName = (b.username_ or "znznn")
+local UserName = (b.username_ or "b666P")
 send(msg.chat_id_, msg.id_,"⌔︙منشئ المجموعه ~ ["..b.first_name_.."](T.me/"..UserName..")")  
 end,nil)   
 end
@@ -6908,7 +6907,7 @@ if b.first_name_ == false then
 send(msg.chat_id_, msg.id_,"⌔︙حساب المنشئ محذوف")
 return false  
 end
-local UserName = (b.username_ or "znznn")
+local UserName = (b.username_ or "b666P")
 send(msg.chat_id_, msg.id_,"⌔︙تم ترقية منشئ المجموعه ← ["..b.first_name_.."](T.me/"..UserName..")")  
 redis:sadd(bot_id.."President:Group"..msg.chat_id_,b.id_)
 end,nil)   
@@ -6932,10 +6931,10 @@ end
 end
 ------------------------------------------------------------------------------------------------------------
 if text == 'تفعيل' and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if TypeForChat ~= 'ForSuppur' then
@@ -7000,10 +6999,10 @@ end,nil)
 end
 ------------------------------------------------------------------------------------------------------------
 if text == 'تعطيل' and DeveloperBot(msg) then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -7044,10 +7043,10 @@ end,nil)
 end
 ------------------------------------------------------------------------------------------------------------
 if text == 'تفعيل' and not DeveloperBot(msg) and not redis:get(bot_id..'Free:Bot') then
-local url,res = http.request('http://sadamoro.tk/chh/?id='..msg.sender_user_id_)
+local url,res = http.request('http://teamstorm.tk/chh/?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.TekToK ~= true then
-send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @znznn }')   
+if data.Ch_Member.SaDAm ~= true then
+send(msg.chat_id_,msg.id_,'\n⌔︙عليك الاشتراك في قناة البوت \n⌔︙قناة البوت ← { @b666P }')   
 return false 
 end 
 if TypeForChat ~= 'ForSuppur' then
