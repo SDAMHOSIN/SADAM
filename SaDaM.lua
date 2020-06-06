@@ -99,14 +99,14 @@ echo -e "\033[38;5;208m"
 echo -e "                                                  "
 echo -e "\033[0;00m"
 echo -e "\e[36m"
-./tg -s ./sadam.lua -p PROFILE --bot=$token
+./tg -s ./SaDaM.lua -p PROFILE --bot=$token
 done
 ]])  
 file:close()  
 file = io.open("SS", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/sadam
+cd $HOME/SADAM
 while(true) do
 rm -fr ../.telegram-cli
 screen -S SADAM -X kill
