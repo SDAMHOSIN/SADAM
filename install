@@ -22,7 +22,7 @@ sudo chmod +x tg
 lua SADAM.lua
 sudo chmod +x SADAM
 sudo chmod +x ./SA
-w./SA
+./SA
 }
 if [ "$1" = "install" ]; then
 install
