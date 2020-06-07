@@ -2159,7 +2159,7 @@ database:del(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "܁💌┆تم تعطيل الاشتراك الاجباري ⁉️ ܰ") 
 return false  
 end
-if text == "• الاشتراك الاجباري 𖤫 ." and SudoBot(msg) then  
+if text == "الاشتراك الاجباري 💵" and SudoBot(msg) then  
 if database:get(bot_id..'add:ch:username') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "܁💌┆تم تفعيل الاشتراك الاجباري⁉️ ܰ")
