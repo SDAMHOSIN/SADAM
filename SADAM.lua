@@ -1361,7 +1361,7 @@ send(msg.chat_id_, msg.id_,'܁༯┆عذرا لايمكنك وضع معرف مج
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
-send(msg.chat_id_, msg.id_,'܁༯┆ههلو ععمري ⁉️\n܁༯┆البوت ادمن في القناة \n܁༯┆تم تفعيل الاشتراك بنجاح . ') 
+send(msg.chat_id_, msg.id_,'܁༯┆ههلو حبي ⁉️\n܁༯┆البوت ادمن في القناة \n܁༯┆تم تفعيل الاشتراك بنجاح . ') 
 database:set(bot_id..'add:ch:id',data.id_)
 database:set(bot_id..'add:ch:username','@'..data.type_.channel_.username_)
 else
@@ -1954,7 +1954,7 @@ return false
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not SudoBot(msg) then
-send(msg.chat_id_, msg.id_,'܁༯┆ههلو ععمري⁉️ ܰ\n܁༯┆عدد أعضاء المجموعةه قليل يرجئ جمع ◃ {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو ليتم التفعيل ⁉️ ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ههلو حبي⁉️ ܰ\n܁༯┆عدد أعضاء المجموعةه قليل يرجئ جمع ◃ {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو ليتم التفعيل ⁉️ ܰ')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -7413,8 +7413,8 @@ end
 return false
 end
 
-if text == ""..(database:get(bot_id..'Name:Bot') or 'بويكا').."" then  
-Namebot = (database:get(bot_id..'Name:Bot') or 'بويكا')
+if text == ""..(database:get(bot_id..'Name:Bot') or 'صدام ').."" then  
+Namebot = (database:get(bot_id..'Name:Bot') or 'صدام ')
 local SADAM_Msg = {
 'عمغي 🥺⁉️⁉️ .',
 'هلا ابو الحب 💘💘 .'
@@ -7424,7 +7424,7 @@ return false
 end
 if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
-send(msg.chat_id_, msg.id_,'܁༯┆ ههلو ععمري  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ ههلو حبي  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
 return false
 end
 if AddChannel(msg.sender_user_id_) == false then
@@ -7442,7 +7442,7 @@ return false
 end 
 if text=="اذاعه" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
-send(msg.chat_id_, msg.id_,'܁༯┆ ههلو ععمري  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ ههلو حبي  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
 return false
 end
 if AddChannel(msg.sender_user_id_) == false then
@@ -7460,7 +7460,7 @@ return false
 end  
 if text=="اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
-send(msg.chat_id_, msg.id_,'܁༯┆ ههلو ععمري  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ ههلو حبي  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
 return false
 end
 if AddChannel(msg.sender_user_id_) == false then
@@ -7473,12 +7473,12 @@ end
 return false
 end
 database:setex(bot_id.."Send:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-send(msg.chat_id_, msg.id_,"܁༯┆ ههلو ععمري ⁉️ ܰ\n܁༯┆ ارسل التوجيةه الي الان ⁉️ ܰ") 
+send(msg.chat_id_, msg.id_,"܁༯┆ ههلو حبي ⁉️ ܰ\n܁༯┆ ارسل التوجيةه الي الان ⁉️ ܰ") 
 return false
 end 
 if text=="اذاعه بالتوجيه خاص" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
 if database:get(bot_id..'Bc:Bots') and not SudoBot(msg) then 
-send(msg.chat_id_, msg.id_,'܁༯┆ ههلو ععمري  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ ههلو حبي  ⁉️ ܰ\n܁༯┆ الاذاعةه معطلة من المطور الاساسي 😹😔 ܰ')
 return false
 end
 if AddChannel(msg.sender_user_id_) == false then
@@ -7491,7 +7491,7 @@ end
 return false
 end
 database:setex(bot_id.."Send:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-send(msg.chat_id_, msg.id_,"܁༯┆ ههلو ععمري ?? ܰ\n܁༯┆ ارسل التوجيةه الي الان ⁉️ ܰ") 
+send(msg.chat_id_, msg.id_,"܁༯┆ ههلو حبي ?? ܰ\n܁༯┆ ارسل التوجيةه الي الان ⁉️ ܰ") 
 return false
 end 
 if text and text:match('^ضع اسم (.*)') and Manager(msg) or text and text:match('^وضع اسم (.*)') and Manager(msg) then 
@@ -8055,7 +8055,7 @@ end
 end
 end
 -------------------------------
-if text == ""..(database:get(bot_id..'Name:Bot') or 'بويكا').." غادر" or text == 'غادر' then  
+if text == ""..(database:get(bot_id..'Name:Bot') or 'صدام ').." غادر" or text == 'غادر' then  
 if Sudo(msg) and not database:get(bot_id..'Left:Bot'..msg.chat_id_)  then 
 tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=bot_id,status_={ID = "ChatMemberStatusLeft"},},function(e,g) end, nil) 
 send(msg.chat_id_, msg.id_,'܁༯┆باي راح اشتاقلكم 😭⁉️ ܰ ') 
@@ -8064,7 +8064,7 @@ end
 return false  
 end
 if text == 'بوت' then
-Namebot = (database:get(bot_id..'Name:Bot') or 'بويكا')
+Namebot = (database:get(bot_id..'Name:Bot') or 'صدام ')
 send(msg.chat_id_, msg.id_,'أسمي اللطيف '..Namebot..' . 𖤐◟') 
 end
 if text == 'الاحصائيات' then
@@ -10192,7 +10192,7 @@ Text_Games = [[
 ܁ 𖧇゠ لعبة انكليزي ▹ ◃ ◞انكليزي◜
 ܁ 𖧇゠ لعبة رياضيات ▹ ◃ ◞رياضيات◜
 ܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀
-𖤓┆[𝚃𝚆𝙰𝚂𝙻 𝚂𝙾𝚄𝚁𝙲𝙴](t.me/y07bot) 
+𖤓┆[𝐒𝐎𝐔𝐑𝐂𝐄 👑](t.me/ZNZNN) 
 ]]
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
@@ -10380,7 +10380,7 @@ if (text and text == "Useuwkq ") then
 send(msg.chat_id_, msg.id_, ' ked uwiq')
 database:del(bot_id.."Fun_Bots:"..msg.chat_id_)
 end
-local Name_Bot = (database:get(bot_id..'Name:Bot') or 'بويكا')
+local Name_Bot = (database:get(bot_id..'Name:Bot') or 'صدام ')
 if not database:get(bot_id.."Fun_Bots:"..msg.chat_id_) then
 if text ==  ""..Name_Bot..' شنو رئيبهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
